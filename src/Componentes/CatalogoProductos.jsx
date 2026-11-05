@@ -8,6 +8,7 @@ export default function CatalogoProductos() {
         async function listar() {
             const resultado = await ObtenerProductos();
             setProductos(resultado.products);
+            
         }
         listar();
     }, [])
@@ -16,10 +17,11 @@ export default function CatalogoProductos() {
             {Productos.map(e => <CardProductos
                 key={e.id}
                 id={e.id}
-                name={e.title}
+                title={e.title}
                 category={e.category}
                 stock={e.stock}
                 imageUrl={e.images[0]}
+                reviews={e.reviews}
             />)}
         </section>
     )

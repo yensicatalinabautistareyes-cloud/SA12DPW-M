@@ -1,12 +1,35 @@
-export default function CardProductos({id,category,name,stock,imageUrl}){
-return(
-    <article>
-        <span>{id}</span>
-        <span>{name}</span>
-        <img src={imageUrl} />
-        <span>{category}</span>
-        <span>Stock</span><p>{stock}</p>
-    </article>
-)
+import Review from "./Review";
+
+export default function CardProductos({ id, category, title, stock, imageUrl,reviews }) {
+    return (
+        <article className="product-card">
+            <div className="product-image">
+                <img src={imageUrl} alt={title} />
+            </div>
+
+            <div className="product-info">
+                <span className="product-category">{category}</span>
+
+                <h3>{title}</h3>
+
+                <div className="product-stock">
+                    <span>Stock</span>
+                    <strong>{stock}</strong>
+                </div>
+            </div>
+            <section>
+                {
+                    reviews.map(e => <Review
+                        rating={e.rating}
+                        comment={e.comment}
+                        date={e.date}
+                        reviewerName={e.reviewerName}
+                        reviewerEmail={e.reviewerEmail}
+                    />
+                    )}
+            </section>
+        </article>
+    )
 }
+
 
